@@ -1,5 +1,6 @@
 public abstract class Topping {
   private double xPos, yPos, xSpeed, ySpeed, speedRatio;
+  private static double difficultyModifier = 1;
 
   public Topping(double speedRatio) {
     this.speedRatio = speedRatio;
@@ -21,8 +22,8 @@ public abstract class Topping {
   }
 
   public void update() {
-    this.xPos += xSpeed*speedRatio;
-    this.yPos += ySpeed*speedRatio;
+    this.xPos += xSpeed * speedRatio * difficultyModifier;
+    this.yPos += ySpeed * speedRatio * difficultyModifier;
   }
 
   public abstract move();
