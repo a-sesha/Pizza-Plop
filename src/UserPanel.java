@@ -6,6 +6,10 @@
 * @version 2019/3/7
 */
 
-public class UserPanel extends ControlPanel {
-  
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class UserPanel extends JPanel implements KeyListener, ActionListener {
+
 }
