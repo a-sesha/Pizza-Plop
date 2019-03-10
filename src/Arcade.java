@@ -10,19 +10,19 @@ public class Arcade extends JFrame {
 
         JavaArcade game = new PizzaPlop();
 
-        //GameStats display = new GameStats(game); //passing in a JavaArcade, therefore I know I can call getHighScore(), getScore()
+        GameStats display = new GameStats(game); //passing in a JavaArcade, therefore I know I can call getHighScore(), getScore()
 
 
-        //ControlPanel controls = new ControlPanel(game, display); //Also passing in JavaArcade to ControlPanel, I know you will respond to buttons
+        ControlPanel controls = new ControlPanel(game, display); //Also passing in JavaArcade to ControlPanel, I know you will respond to buttons
 
-        //((UserPanel) game).setDisplay(display); //optional, provides game ability to update display
+        //((PizzaPlop) game).setDisplay(display); //optional, provides game ability to update display
 
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         panel.setBorder(new EmptyBorder(0, 5, 0, 5));
-        //panel.add(display, BorderLayout.NORTH);
+        panel.add(display, BorderLayout.NORTH);
         panel.add((JPanel) game, BorderLayout.CENTER);
-        //panel.add(controls, BorderLayout.SOUTH);
+        panel.add(controls, BorderLayout.SOUTH);
 
         Container c = getContentPane();
         c.add(panel, BorderLayout.CENTER);
