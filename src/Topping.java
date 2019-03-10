@@ -26,5 +26,7 @@ public abstract class Topping {
     this.yPos += ySpeed * speedRatio * difficultyModifier;
   }
 
-  public abstract move();
+  public abstract String getImg();
+
+  public abstract String getOverlayImg();
 }
