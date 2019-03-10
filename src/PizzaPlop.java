@@ -13,7 +13,6 @@ import java.awt.event.*;
 public class PizzaPlop extends JPanel implements JavaArcade {
 
   public PizzaPlop() {
-    setPreferredSize(new Dimension(400, 600));
     setBackground(Color.WHITE);
   }
 
