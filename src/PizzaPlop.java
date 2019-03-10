@@ -11,10 +11,10 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class PizzaPlop extends JPanel implements JavaArcade {
-  public UserPanel(int width, int height) {
-    super();
 
-    //this.setSize(width, height);
+  public PizzaPlop() {
+    setPreferredSize(new Dimension(400, 600));
+    setBackground(Color.WHITE);
   }
 
   public boolean running() {
