@@ -4,10 +4,10 @@ public class Pineapple extends Topping {
   }
 
   public String getImg() {
-    return "pineapple.png";
+    return "ToppingImages/pineapple.png";
   }
 
-  public String getOverlayImg() {
-    return "pineappleOverlay.png";
+  public String toString() {
+    return "Pineapple";
   }
 }

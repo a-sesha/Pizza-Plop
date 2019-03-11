@@ -28,5 +28,7 @@ public abstract class Topping {
 
   public abstract String getImg();
 
-  public abstract String getOverlayImg();
+  public static Topping[] getList() {
+    return new Topping[] {new Avocado(), new Bacon(), new Pineapple()};
+  }
 }
