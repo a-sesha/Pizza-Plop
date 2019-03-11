@@ -3,7 +3,7 @@ public class Pineapple extends Topping {
     super(2);
   }
 
-  public String getImg() {
+  public String imageString() {
     return "ToppingImages/pineapple.png";
   }
 

@@ -1,24 +1,37 @@
-import java.util.ArrayList;
+import java.awt.*;
 
 public class ToppingDispenser {
-    private ArrayList<Topping> queue;
-    private final int size = 10;
+    private Topping topping;
+    private double xPos;
+    private boolean isDispencing;
+    private final int xMin = 100;
+    private final int xMax = 500;
 
     public ToppingDispenser() {
-        this.queue = new ArrayList<Topping>();
+        this.topping = null;
+        this.xPos = (xMin + xMax) / 2;
     }
 
-    public void refill() {
-        while (queue.size() < size) {
-            queue.add(Topping.getList()[(int)(Math.random()*Topping.getList().length)]);
+    public void update(double difficultyModifier) {
+        if (xPos < xMin || xPos > xMax) {
+            isDispencing = !isDispencing;
+        }
+
+        if (isDispencing) {
+            xPos -= difficultyModifier;
+        }
+        else {
+            xPos += 2*difficultyModifier;
         }
     }
 
-    public Topping dispense() {
-        Topping temp = queue.remove(0);
+    public void draw(Graphics g) {
+        g.setColor(Color.GRAY);
+        g.fillRect(xMin-50, 5, xMax-xMin+100, 45);
+        g.fillRect((int)xPos-25, 50, 50, 50);
 
-        refill();
-
-        return temp;
+        if (topping != null) {
+            g.drawImage(topping.getImage(), (int) xPos - 25, 60, 30, 30, null);
+        }
     }
 }

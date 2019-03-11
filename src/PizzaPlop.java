@@ -12,9 +12,16 @@ import java.awt.event.*;
 
 public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, ActionListener {
     private boolean isRunning;
+    private ToppingQueue toppingQueue;
+    private ToppingDispenser toppingDispenser;
+
+    public double difficultyModifier = 1;
 
     public PizzaPlop() {
         this.isRunning = false;
+        this.toppingQueue = new ToppingQueue();
+        this.toppingDispenser = new ToppingDispenser();
+        this.difficultyModifier = 1;
 
         setBackground(Color.WHITE);
     }
@@ -110,7 +117,12 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
 
     public void paintComponent(Graphics g){
 
-        super.paintComponent(g); //a call to JPanel's paintComponent
+        super.paintComponent(g);
+
+        toppingQueue.draw(g);
+        toppingDispenser.draw(g);
+
+
 
         //g.drawString("You have 3 lives to kill the enemy", 100, 200);
 

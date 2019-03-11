@@ -3,7 +3,7 @@ public class Bacon extends Topping {
         super(3);
     }
 
-    public String getImg() {
+    public String imageString() {
         return "ToppingImages/bacon.png";
     }
 
