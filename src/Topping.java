@@ -23,14 +23,16 @@ public abstract class Topping {
         this.yPos = yPos;
     }
 
-    public void setSpeeds(double xSpeed, double ySpeed) {
-        this.xSpeed = xSpeed;
-        this.ySpeed = ySpeed;
+    public void changeAngle(double angle) {
+        double totalSpeed = Math.sqrt(xSpeed * xSpeed + ySpeed * ySpeed);
+
+        this.xSpeed = totalSpeed * Math.cos(angle);
+        this.ySpeed = totalSpeed * -Math.sin(angle);
     }
 
-    public void changeSpeed(double xAccel, double yAccel) {
-        this.xSpeed += xAccel / 30;
-        this.ySpeed += yAccel / 30;
+    public void accelerate(double xAccel, double yAccel) {
+        this.xSpeed += xAccel;
+        this.ySpeed += yAccel;
     }
 
     public void update(double difficultyModifier) {

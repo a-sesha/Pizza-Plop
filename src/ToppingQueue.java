@@ -31,13 +31,13 @@ public class ToppingQueue {
 
     public void draw(Graphics g) {
         g.setColor(Color.BLACK);
-        g.fillRect(543, 3, 44, 404);
+        g.fillRect(543, 53, 44, 404);
 
         g.setColor(Color.GRAY);
-        g.fillRect(545, 5, 40, 400);
+        g.fillRect(545, 55, 40, 400);
 
         for (Topping topping : queue) {
-            g.drawImage(topping.getImage(), 550, 10 + queue.indexOf(topping) * 40, 30, 30, null);
+            g.drawImage(topping.getImage(), 550, 60 + queue.indexOf(topping) * 40, 30, 30, null);
         }
     }
 }

@@ -13,16 +13,12 @@ import java.awt.event.*;
 public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, ActionListener {
     private Timer timer;
     private boolean isRunning;
-    private ToppingQueue toppingQueue;
-    private ToppingDispenser toppingDispenser;
     private Board board;
 
     public double difficultyModifier = 1;
 
     public PizzaPlop() {
         this.isRunning = false;
-        this.toppingQueue = new ToppingQueue();
-        this.toppingDispenser = new ToppingDispenser();
         this.board = new Board();
         this.difficultyModifier = 1;
 
@@ -69,17 +65,7 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
     }
 
     public void actionPerformed (ActionEvent e) { //invoked when timer expires every 5ms
-        toppingDispenser.update(difficultyModifier);
-
-        if (toppingDispenser.isReadyToBeFilled()) {
-            toppingDispenser.insertTopping(toppingQueue.fillDispenser());
-        }
-
-        Topping droppedTopping = toppingDispenser.checkForDrop();
-
-        if (droppedTopping != null) {
-            board.toppingDispensed(droppedTopping, toppingDispenser.getX());
-        }
+        board.update(difficultyModifier);
 
         repaint(); //ensures PaintComponent is called
     }
@@ -137,8 +123,6 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
 
         super.paintComponent(g);
 
-        toppingQueue.draw(g);
-        toppingDispenser.draw(g);
         board.draw(g);
 
 

@@ -59,11 +59,11 @@ public class ToppingDispenser {
 
     public void draw(Graphics g) {
         g.setColor(Color.GRAY);
-        g.fillRect(xMin - 50, 5, xMax - xMin + 100, 45);
-        g.fillRect((int) xPos - 25, 50, 50, 50);
+        g.fillRect(xMin - 50, 55, xMax - xMin + 100, 45);
+        g.fillRect((int) xPos - 25, 100, 50, 50);
 
         if (topping != null) {
-            g.drawImage(topping.getImage(), (int) xPos - 15, 60, 30, 30, null);
+            g.drawImage(topping.getImage(), (int) xPos - 15, 110, 30, 30, null);
         }
     }
 }
