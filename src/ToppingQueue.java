@@ -18,9 +18,13 @@ public class ToppingQueue {
     }
 
     public Topping fillDispenser() {
+        System.out.println(queue);
+
         Topping temp = queue.remove(0);
 
         refill();
+
+        System.out.println(queue);
 
         return temp;
     }
@@ -33,11 +37,7 @@ public class ToppingQueue {
         g.fillRect(545, 5, 40, 400);
 
         for (Topping topping : queue) {
-            if (queue.indexOf(topping) > 0) {
-                g.drawImage(topping.getImage(), 550, 10 + queue.indexOf(topping) * 40, 30, 30, null);
-            }
+            g.drawImage(topping.getImage(), 550, 10 + queue.indexOf(topping) * 40, 30, 30, null);
         }
-
-
     }
 }
