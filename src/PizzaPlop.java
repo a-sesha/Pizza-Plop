@@ -25,6 +25,9 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
         timer = new Timer(10, this);
         timer.start();
 
+        addKeyListener(this);
+
+        setFocusable(true);
         setBackground(Color.WHITE);
     }
 
@@ -72,49 +75,76 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
 
     public void keyTyped(KeyEvent e) { }
 
-    public void keyReleased(KeyEvent e) { }
+    public void keyReleased(KeyEvent e) {
+        switch(e.getKeyCode()) {
+            case KeyEvent.VK_A:
+                if (board.getRotationInput(0) == Platform.RotationInput.CLOCKWISE) {
+                    board.updateInput(0, Platform.RotationInput.NONE);
+                }
+                break;
+            case KeyEvent.VK_D:
+                if (board.getRotationInput(0) == Platform.RotationInput.COUNTERCLOCKWISE) {
+                    board.updateInput(0, Platform.RotationInput.NONE);
+                }
+                break;
+            case KeyEvent.VK_W:
+                if (board.getTranslationInput(0) == Platform.TranslationInput.UP) {
+                    board.updateInput(0, Platform.TranslationInput.NONE);
+                }
+                break;
+            case KeyEvent.VK_S:
+                if (board.getTranslationInput(0) == Platform.TranslationInput.DOWN) {
+                    board.updateInput(0, Platform.TranslationInput.NONE);
+                }
+                break;
+            case KeyEvent.VK_LEFT:
+                if (board.getRotationInput(1) == Platform.RotationInput.CLOCKWISE) {
+                    board.updateInput(1, Platform.RotationInput.NONE);
+                }
+                break;
+            case KeyEvent.VK_RIGHT:
+                if (board.getRotationInput(1) == Platform.RotationInput.COUNTERCLOCKWISE) {
+                    board.updateInput(1, Platform.RotationInput.NONE);
+                }
+                break;
+            case KeyEvent.VK_UP:
+                if (board.getTranslationInput(1) == Platform.TranslationInput.UP) {
+                    board.updateInput(1, Platform.TranslationInput.NONE);
+                }
+                break;
+            case KeyEvent.VK_DOWN:
+                if (board.getTranslationInput(1) == Platform.TranslationInput.DOWN) {
+                    board.updateInput(1, Platform.TranslationInput.NONE);
+                }
+        }
+    }
 
     public void keyPressed(KeyEvent e) {
-
         switch(e.getKeyCode()) {
-            /*case KeyEvent.VK_ENTER://actions performed if enter key is pressed
-
+            case KeyEvent.VK_A:
+                board.updateInput(0, Platform.RotationInput.CLOCKWISE);
                 break;
-            case KeyEvent.VK_SPACE://actions performed if enter key is pressed
-
-
-
+            case KeyEvent.VK_D:
+                board.updateInput(0, Platform.RotationInput.COUNTERCLOCKWISE);
                 break;
-            case KeyEvent.VK_LEFT://actions performed if enter key is pressed
-
-                myHero.moveLeft();
-
+            case KeyEvent.VK_W:
+                board.updateInput(0, Platform.TranslationInput.UP);
                 break;
-            case KeyEvent.VK_RIGHT://actions performed if enter key is pressed
-
-                myHero.moveRight();
-
+            case KeyEvent.VK_S:
+                board.updateInput(0, Platform.TranslationInput.DOWN);
                 break;
-            case KeyEvent.VK_UP://actions performed if enter key is pressed
-
-                myHero.moveNorth();
-
+            case KeyEvent.VK_LEFT:
+                board.updateInput(1, Platform.RotationInput.CLOCKWISE);
                 break;
-            case KeyEvent.VK_DOWN://actions performed if enter key is pressed
-
-                myHero.moveSouth();
-
+            case KeyEvent.VK_RIGHT:
+                board.updateInput(1, Platform.RotationInput.COUNTERCLOCKWISE);
                 break;
-
-            case KeyEvent.VK_ESCAPE://actions performed if escape key is pressed
-                System.exit(0);
-
+            case KeyEvent.VK_UP:
+                board.updateInput(1, Platform.TranslationInput.UP);
                 break;
-            default:*/
-
+            case KeyEvent.VK_DOWN:
+                board.updateInput(1, Platform.TranslationInput.DOWN);
         }
-
-
     }
 
     //draws everything

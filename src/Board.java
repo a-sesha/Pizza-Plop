@@ -37,6 +37,26 @@ public class Board {
             topping.accelerate(0, 0.1);
             topping.update(difficultyModifier);
         }
+
+        for (Platform platform : platforms) {
+            platform.update(difficultyModifier);
+        }
+    }
+
+    public Platform.RotationInput getRotationInput(int index) {
+        return platforms[index].getRotationInput();
+    }
+
+    public Platform.TranslationInput getTranslationInput(int index) {
+        return platforms[index].getTranslationInput();
+    }
+
+    public void updateInput(int index, Platform.RotationInput input) {
+        platforms[index].setRotationInput(input);
+    }
+
+    public void updateInput(int index, Platform.TranslationInput input) {
+        platforms[index].setTranslationInput(input);
     }
 
     public void draw(Graphics g) {
