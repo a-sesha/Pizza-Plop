@@ -10,20 +10,25 @@ public abstract class Customer {
     private boolean[] toppingsSatisfied;
 
     public Customer() {
-        this.arrivalTime = (int) (System.currentTimeMillis() / 1000);
-
         this.order = new Topping[3];
-        this.toppingsSatisfied = new boolean[3];
+
+        reset();
+    }
+
+    public Topping[] getOrder() {
+        return order;
+    }
+
+    public void reset() {
+        arrivalTime = (int) (System.currentTimeMillis() / 1000);
+
+        toppingsSatisfied = new boolean[3];
 
         for (int i = 0; i < 3; i++) {
             while (order[i] == null || !order[i].isEdible()) {
                 order[i] = Topping.getList()[(int) (Math.random() * Topping.getList().length)];
             }
         }
-    }
-
-    public Topping[] getOrder() {
-        return order;
     }
 
     public abstract String packageName();
@@ -104,6 +109,6 @@ public abstract class Customer {
     }
 
     public static Customer[] getList() {
-        return new Customer[]{new PonytailGirl(), new StraightHairGirl()};
+        return new Customer[]{new Baby(), new Boy(), new PonytailGirl(), new StraightHairGirl()};
     }
 }

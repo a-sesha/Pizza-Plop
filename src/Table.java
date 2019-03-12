@@ -49,6 +49,8 @@ public class Table {
         for (int i = 0; i < numCustomers; i++) {
             if(customers[i].isSatisfied()) {
                 score += 50 + (int) (15 * customers[i].getPatience());
+
+                customers[i].reset();
             }
             if (customers[i].getPatience() == 0) {
                 customers[i] = null;
