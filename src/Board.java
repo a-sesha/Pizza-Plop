@@ -89,6 +89,10 @@ public class Board {
         platforms[index].setTranslationInput(input);
     }
 
+    public int getScore() {
+        return table.getScore();
+    }
+
     public void draw(Graphics g) {
         queue.draw(g);
         dispenser.draw(g);

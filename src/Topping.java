@@ -6,7 +6,7 @@ import java.io.IOException;
 public abstract class Topping {
     private double xPos, yPos, xSpeed, ySpeed, speedRatio;
     private final double xMin = 50;
-    private final double xMax = 550;
+    private final double xMax = 500;
     private boolean isEdible;
 
     public Topping(double speedRatio, boolean isEdible) {
@@ -46,8 +46,7 @@ public abstract class Topping {
 
         if (xPos < xMin) {
             xPos = xMin;
-        }
-        else if (xPos > xMax) {
+        } else if (xPos > xMax) {
             xPos = xMax;
         }
 
@@ -69,6 +68,6 @@ public abstract class Topping {
     }
 
     public static Topping[] getList() {
-        return new Topping[] {new Avocado(), new Bacon(), new Broccoli(), new Ham(), new Mushroom(), new Pepper(), new Pineapple(), new Poison(), new Zucchini()};
+        return new Topping[]{new Avocado(), new Bacon(), new Mushroom(), new Pepper(), new Pineapple(), new Poison()};
     }
 }
