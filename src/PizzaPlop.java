@@ -13,12 +13,14 @@ import java.awt.event.*;
 public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, ActionListener {
     private Timer timer;
     private boolean isRunning;
+    private boolean isPaused;
     private Board board;
 
     public double difficultyModifier = 1;
 
     public PizzaPlop() {
         this.isRunning = false;
+        this.isPaused = false;
         this.board = new Board();
         this.difficultyModifier = 1;
 
@@ -44,8 +46,17 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
     }
 
     public void pauseGame() {
-
+        isPaused = !isPaused;
+        if (isPaused) {
+            try {
+                Thread.sleep(250);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+        }
     }
+
+
 
     public String getInstructions() {
         return "";
@@ -68,6 +79,10 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
     }
 
     public void actionPerformed(ActionEvent e) { //invoked when timer expires every 5ms
+        if(!isPaused) {
+            pauseGame();
+        }
+
         board.update(difficultyModifier);
         //update(getPoints());
 
