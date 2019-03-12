@@ -1,6 +1,6 @@
 public class Zucchini extends Topping {
     public Zucchini() {
-        super(1);
+        super(1, true);
     }
 
     public String imageString() {

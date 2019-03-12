@@ -1,6 +1,6 @@
 public class Pineapple extends Topping {
   public Pineapple() {
-    super(2);
+    super(2, true);
   }
 
   public String imageString() {

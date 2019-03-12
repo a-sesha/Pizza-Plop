@@ -1,6 +1,6 @@
 public class Poison extends Topping {
     public Poison() {
-        super(2);
+        super(2, false);
     }
 
     public String imageString() {

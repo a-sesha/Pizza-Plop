@@ -1,6 +1,6 @@
 public class Broccoli extends Topping {
     public Broccoli() {
-        super(1.5);
+        super(1.5, true);
     }
 
     public String imageString() {

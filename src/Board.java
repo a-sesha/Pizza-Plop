@@ -6,6 +6,7 @@ public class Board {
     private ToppingDispenser dispenser;
     private Platform[] platforms;
     private ArrayList<Topping> fallingToppings;
+    private Table table;
 
     public Board() {
         this.queue = new ToppingQueue();
@@ -13,6 +14,7 @@ public class Board {
         this.platforms = new Platform[] {new Platform(200, 300, 150, Color.RED),
                 new Platform(400, 300, 150, Color.BLUE)};
         this.fallingToppings = new ArrayList<Topping>();
+        this.table = new Table();
     }
 
     public void toppingDispensed(Topping topping, double xPos) {
@@ -74,7 +76,15 @@ public class Board {
         }
 
         for (Topping topping : fallingToppings) {
-            g.drawImage(topping.getImage(), (int)topping.getX()-15, (int)topping.getY()-15, 30, 30, null);
+            if (topping != null) {
+                g.drawImage(topping.getImage(), (int) topping.getX() - 15, (int) topping.getY() - 15, 30, 30, null);
+            }
         }
+
+        /*for (Customer customer : customers) {
+            if (customer != null) {
+
+            }
+        }*/
     }
 }

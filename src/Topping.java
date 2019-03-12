@@ -5,9 +5,11 @@ import java.io.IOException;
 
 public abstract class Topping {
     private double xPos, yPos, xSpeed, ySpeed, speedRatio;
+    private boolean isEdible;
 
-    public Topping(double speedRatio) {
+    public Topping(double speedRatio, boolean isEdible) {
         this.speedRatio = speedRatio;
+        this.isEdible = isEdible;
     }
 
     public double getX() {
@@ -16,6 +18,10 @@ public abstract class Topping {
 
     public double getY() {
         return yPos;
+    }
+
+    public boolean isEdible() {
+        return isEdible;
     }
 
     public void setPosition(double xPos, double yPos) {
@@ -55,6 +61,6 @@ public abstract class Topping {
     }
 
     public static Topping[] getList() {
-        return new Topping[] {new Avocado(), new Bacon(), new Broccoli(), new Ham(), new Mushroom(), new Pepper(), new Pineapple(), new Zucchini()};
+        return new Topping[] {new Avocado(), new Bacon(), new Broccoli(), new Ham(), new Mushroom(), new Pepper(), new Pineapple(), new Poison(), new Zucchini()};
     }
 }

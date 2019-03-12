@@ -1,6 +1,6 @@
 public class Pepper extends Topping {
     public Pepper() {
-        super(3);
+        super(3, true);
     }
 
     public String imageString() {

@@ -1,6 +1,6 @@
 public class Avocado extends Topping {
     public Avocado() {
-        super(3);
+        super(3, true);
     }
 
     public String imageString() {
