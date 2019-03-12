@@ -1,4 +1,5 @@
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -6,7 +7,6 @@ import java.io.IOException;
 public abstract class Customer {
     private int arrivalTime;
     private Topping[] order;
-    private Pizza pizza;
 
     public Customer() {
         this.arrivalTime = (int)(System.currentTimeMillis()/1000);
@@ -18,8 +18,6 @@ public abstract class Customer {
                 topping = Topping.getList()[(int)(Math.random()*Topping.getList().length)];
             }
         }
-
-        this.pizza = new Pizza();
     }
 
     public abstract String packageName();
@@ -51,5 +49,9 @@ public abstract class Customer {
 
     public boolean isAngry() {
         return (int)(System.currentTimeMillis()/1000) - arrivalTime > 20;
+    }
+
+    public void draw(Graphics g) {
+
     }
 }

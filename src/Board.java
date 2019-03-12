@@ -75,16 +75,12 @@ public class Board {
             platform.draw(g);
         }
 
+        table.draw(g);
+
         for (Topping topping : fallingToppings) {
             if (topping != null) {
                 g.drawImage(topping.getImage(), (int) topping.getX() - 15, (int) topping.getY() - 15, 30, 30, null);
             }
         }
-
-        /*for (Customer customer : customers) {
-            if (customer != null) {
-
-            }
-        }*/
     }
 }
