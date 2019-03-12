@@ -1,10 +1,10 @@
 /*
-* User Panel
-*
-* @author David Grossman
-*
-* @version 2019/3/7
-*/
+ * User Panel
+ *
+ * @author David Grossman
+ *
+ * @version 2019/3/7
+ */
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,7 +40,7 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
     }
 
     public String getGameName() {
-    return "Pizza Plop";
+        return "Pizza Plop";
     }
 
     public void pauseGame() {
@@ -48,15 +48,15 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
     }
 
     public String getInstructions() {
-    return "";
+        return "";
     }
 
     public String getCredits() {
-    return "";
+        return "";
     }
 
     public String getHighScore() {
-    return "0";
+        return "0";
     }
 
     public void stopGame() {
@@ -67,16 +67,17 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
         return 0;
     }
 
-    public void actionPerformed (ActionEvent e) { //invoked when timer expires every 5ms
+    public void actionPerformed(ActionEvent e) { //invoked when timer expires every 5ms
         board.update(difficultyModifier);
 
         repaint(); //ensures PaintComponent is called
     }
 
-    public void keyTyped(KeyEvent e) { }
+    public void keyTyped(KeyEvent e) {
+    }
 
     public void keyReleased(KeyEvent e) {
-        switch(e.getKeyCode()) {
+        switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
                 if (board.getRotationInput(0) == Platform.RotationInput.CLOCKWISE) {
                     board.updateInput(0, Platform.RotationInput.NONE);
@@ -120,7 +121,7 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
     }
 
     public void keyPressed(KeyEvent e) {
-        switch(e.getKeyCode()) {
+        switch (e.getKeyCode()) {
             case KeyEvent.VK_A:
                 board.updateInput(0, Platform.RotationInput.CLOCKWISE);
                 break;
@@ -149,12 +150,11 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
 
     //draws everything
 
-    public void paintComponent(Graphics g){
+    public void paintComponent(Graphics g) {
 
         super.paintComponent(g);
 
         board.draw(g);
-
 
 
         //g.drawString("You have 3 lives to kill the enemy", 100, 200);
@@ -174,9 +174,6 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
             g.drawString("(Inactive) Press enter to shoot .", (getWidth() /2) - 100, getHeight()/2 + 40);
             g.drawString("You have 3 lives to kill the enemy", (getWidth() /2) - 100, getHeight()/2+ 60);
         }*/
-
-
-
 
 
     }

@@ -68,10 +68,10 @@ public class Platform {
     public void update(double difficultyModifier) {
         switch (rotationInput) {
             case CLOCKWISE:
-                angle -= Math.PI/15 * difficultyModifier;
+                angle -= Math.PI / 15 * difficultyModifier;
                 break;
             case COUNTERCLOCKWISE:
-                angle += Math.PI/15 * difficultyModifier;
+                angle += Math.PI / 15 * difficultyModifier;
         }
 
         switch (translationInput) {
@@ -84,8 +84,7 @@ public class Platform {
 
         if (yPos < yMin) {
             yPos = yMin;
-        }
-        else if (yPos > yMax) {
+        } else if (yPos > yMax) {
             yPos = yMax;
         }
     }
@@ -101,8 +100,8 @@ public class Platform {
 
         Graphics2D g2 = (Graphics2D) g.create();
 
-        g2.rotate(angle, xPos, yPos + length/20);
+        g2.rotate(angle, xPos, yPos + length / 20);
 
-        g2.drawImage(platformImg, (int)(xPos-length/2), (int)yPos, (int)length, (int)(length/10), null);
+        g2.drawImage(platformImg, (int) (xPos - length / 2), (int) yPos, (int) length, (int) (length / 10), null);
     }
 }
