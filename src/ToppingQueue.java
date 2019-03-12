@@ -17,7 +17,7 @@ public class ToppingQueue {
 
     public void refill() {
         while (queue.size() < size) {
-            queue.add(Topping.getList()[(int)(Math.random()*Topping.getList().length)]);
+            queue.add(Topping.getList()[(int) (Math.random() * Topping.getList().length)]);
         }
     }
 

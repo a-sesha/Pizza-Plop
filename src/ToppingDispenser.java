@@ -42,8 +42,7 @@ public class ToppingDispenser {
             Topping temp = topping;
             topping = null;
             return temp;
-        }
-        else {
+        } else {
             return null;
         }
     }
@@ -74,8 +73,7 @@ public class ToppingDispenser {
 
             if (isDispencing) {
                 clawImg = ImageIO.read(new File("src/Assets/closedClaw.png"));
-            }
-            else {
+            } else {
                 clawImg = ImageIO.read(new File("src/Assets/openClaw.png"));
             }
 

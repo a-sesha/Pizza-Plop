@@ -64,11 +64,12 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
     }
 
     public int getPoints() {
-        return 0;
+        return board.getScore();
     }
 
     public void actionPerformed(ActionEvent e) { //invoked when timer expires every 5ms
         board.update(difficultyModifier);
+        //update(getPoints());
 
         repaint(); //ensures PaintComponent is called
     }

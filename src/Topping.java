@@ -46,8 +46,7 @@ public abstract class Topping {
 
         if (xPos < xMin) {
             xPos = xMin;
-        }
-        else if (xPos > xMax) {
+        } else if (xPos > xMax) {
             xPos = xMax;
         }
 
@@ -69,6 +68,6 @@ public abstract class Topping {
     }
 
     public static Topping[] getList() {
-        return new Topping[] {new Avocado(), new Bacon(), new Mushroom(), new Pepper(), new Pineapple(), new Poison()};
+        return new Topping[]{new Avocado(), new Bacon(), new Mushroom(), new Pepper(), new Pineapple(), new Poison()};
     }
 }

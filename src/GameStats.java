@@ -7,7 +7,7 @@ import javax.swing.border.EmptyBorder;
 
 public class GameStats extends JPanel {
     private JTextField gameNameText, currentHighScorer, currentHighScore;
-    private static int yourScore;
+    private int yourScore;
     private JLabel yourScoreText;
     private JavaArcade game;
 
@@ -33,14 +33,10 @@ public class GameStats extends JPanel {
 
     }
 
-    public static void addCustomerScore(int points) {
-        yourScore += points;
-
-    }
-
 
     public void update(int points) {
 
+        yourScore = points;
         yourScoreText.setText(" Your Score: " + points);
 
 

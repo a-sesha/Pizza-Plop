@@ -11,7 +11,7 @@ public class Board {
     public Board() {
         this.queue = new ToppingQueue();
         this.dispenser = new ToppingDispenser();
-        this.platforms = new Platform[] {new Platform(200, 300, 200),
+        this.platforms = new Platform[]{new Platform(200, 300, 200),
                 new Platform(400, 300, 200)};
         this.fallingToppings = new ArrayList<Topping>();
         this.table = new Table();
@@ -20,6 +20,10 @@ public class Board {
     public void toppingDispensed(Topping topping, double xPos) {
         topping.setPosition(xPos, 75);
         fallingToppings.add(topping);
+    }
+
+    public int getScore() {
+        return table.getScore();
     }
 
     public void update(double difficultyModifier) {
@@ -57,7 +61,7 @@ public class Board {
             topping.update(difficultyModifier);
 
             if (topping.getY() > 450) {
-                table.addTopping(topping, (int)topping.getX() / 200);
+                table.addTopping(topping, (int) topping.getX() / 200);
                 despawnedToppings.add(topping);
             }
         }

@@ -61,11 +61,18 @@ public abstract class Customer {
     }
 
     public Boolean isSatisfied() {
-        for (boolean b : toppingsSatisfied) if (!b) return false;
-        GameStats.addCustomerScore(50 + (int) (15 * getPatience()));
+        for (boolean b : toppingsSatisfied) {
+            if (!b) return false;
+        }
         return true;
     }
 
+//    public void updateScore() {
+//        if (this.isSatisfied()) {
+//            PizzaPlop.addPoints(50 + (int) (15 * getPatience()));
+//        }
+//
+//    }
 
     public boolean addTopping(Topping newTopping) { //returns false if life is lost
         if (!newTopping.isEdible()) {
