@@ -2,6 +2,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 
 public abstract class Customer {
     private int arrivalTime;
@@ -59,6 +60,12 @@ public abstract class Customer {
     public boolean isAngry() {
         return getPatience() < 0.3;
     }
+
+    public Boolean isSatisfied() {
+        for(boolean b : toppingsSatisfied) if(!b) return false;
+        return true;
+    }
+
 
     public boolean addTopping(Topping newTopping) { //returns false if life is lost
         if (!newTopping.isEdible()) {

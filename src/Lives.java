@@ -28,7 +28,7 @@ public class Lives {
             System.out.println("Picture could not load");
         }
 
-        for (int i=0; i<num; i++) {
+        for (int i = 0; i < num; i++) {
             g.drawImage(heartImg, 550, 630 - i * 40, 30, 30, null);
         }
     }

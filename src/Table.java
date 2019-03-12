@@ -14,9 +14,9 @@ public class Table {
         this.customers = new Customer[numCustomers];
         this.pizzas = new Pizza[numCustomers];
 
-        for (Pizza pizza : pizzas) {
-            pizza = new Pizza();
-        }
+//        for (Pizza pizza : pizzas) {
+//            pizza = new Pizza();
+//        }
 
         this.lives = new Lives();
 
