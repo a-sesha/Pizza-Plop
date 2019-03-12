@@ -10,14 +10,14 @@ public abstract class Customer {
     private boolean[] toppingsSatisfied;
 
     public Customer() {
-        this.arrivalTime = (int)(System.currentTimeMillis()/1000);
+        this.arrivalTime = (int) (System.currentTimeMillis() / 1000);
 
         this.order = new Topping[3];
         this.toppingsSatisfied = new boolean[3];
 
-        for (int i=0; i<3; i++) {
+        for (int i = 0; i < 3; i++) {
             while (order[i] == null || !order[i].isEdible()) {
-                order[i] = Topping.getList()[(int)(Math.random()*Topping.getList().length)];
+                order[i] = Topping.getList()[(int) (Math.random() * Topping.getList().length)];
             }
         }
     }
@@ -33,8 +33,7 @@ public abstract class Customer {
 
         if (isAngry()) {
             imageString += "angry.png";
-        }
-        else {
+        } else {
             imageString += "happy.png";
         }
 
@@ -54,7 +53,7 @@ public abstract class Customer {
     }
 
     public double getPatience() {
-        return Math.max(1 - (double)((int)(System.currentTimeMillis()/1000) - arrivalTime)/150, 0);
+        return Math.max(1 - (double) ((int) (System.currentTimeMillis() / 1000) - arrivalTime) / 150, 0);
     }
 
     public boolean isAngry() {
@@ -62,7 +61,8 @@ public abstract class Customer {
     }
 
     public Boolean isSatisfied() {
-        for(boolean b : toppingsSatisfied) if(!b) return false;
+        for (boolean b : toppingsSatisfied) if (!b) return false;
+        GameStats.addCustomerScore(50 + (int) (15 * getPatience()));
         return true;
     }
 
@@ -72,7 +72,7 @@ public abstract class Customer {
             return false;
         }
 
-        for (int i=0; i<3; i++) {
+        for (int i = 0; i < 3; i++) {
             if (order[i].toString().equals(newTopping.toString()) && !toppingsSatisfied[i]) {
                 toppingsSatisfied[i] = true;
                 return true;
@@ -87,7 +87,7 @@ public abstract class Customer {
     public Topping[] satisfiedToppings() {
         Topping[] satisfiedToppings = new Topping[3];
 
-        for (int i=0; i<3; i++) {
+        for (int i = 0; i < 3; i++) {
             if (toppingsSatisfied[i]) {
                 satisfiedToppings[i] = order[i];
             }
@@ -97,6 +97,6 @@ public abstract class Customer {
     }
 
     public static Customer[] getList() {
-        return new Customer[] {new PonytailGirl(), new StraightHairGirl()};
+        return new Customer[]{new PonytailGirl(), new StraightHairGirl()};
     }
 }

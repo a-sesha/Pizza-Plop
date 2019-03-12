@@ -41,6 +41,7 @@ public class Table {
 
     public void update() {
         for (int i=0; i<numCustomers; i++) {
+            customers[i].isSatisfied();
             if (customers[i].getPatience() == 0) {
                 customers[i] = null;
                 lives.decrease();

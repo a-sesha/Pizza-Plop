@@ -7,7 +7,7 @@ import javax.swing.border.EmptyBorder;
 
 public class GameStats extends JPanel {
     private JTextField gameNameText, currentHighScorer, currentHighScore;
-    private int yourScore;
+    private static int yourScore;
     private JLabel yourScoreText;
     private JavaArcade game;
 
@@ -30,6 +30,11 @@ public class GameStats extends JPanel {
         add(yourScoreText);
         Font displayFont = new Font("Monospaced", Font.BOLD, 16);
         game = t;
+
+    }
+
+    public static void addCustomerScore(int points) {
+        yourScore += points;
 
     }
 
