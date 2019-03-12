@@ -1,4 +1,8 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class ToppingQueue {
@@ -18,23 +22,23 @@ public class ToppingQueue {
     }
 
     public Topping fillDispenser() {
-        System.out.println(queue);
-
         Topping temp = queue.remove(0);
 
         refill();
-
-        System.out.println(queue);
 
         return temp;
     }
 
     public void draw(Graphics g) {
-        g.setColor(Color.BLACK);
-        g.fillRect(543, 53, 44, 404);
+        BufferedImage queueImg = null;
 
-        g.setColor(Color.GRAY);
-        g.fillRect(545, 55, 40, 400);
+        try {
+            queueImg = ImageIO.read(new File("src/Assets/queue.png"));
+        } catch (IOException e) {
+            System.out.println("Picture could not load");
+        }
+
+        g.drawImage(queueImg, 540, 50, 50, 410, null);
 
         for (Topping topping : queue) {
             g.drawImage(topping.getImage(), 550, 60 + queue.indexOf(topping) * 40, 30, 30, null);

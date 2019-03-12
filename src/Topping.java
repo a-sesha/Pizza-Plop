@@ -5,6 +5,8 @@ import java.io.IOException;
 
 public abstract class Topping {
     private double xPos, yPos, xSpeed, ySpeed, speedRatio;
+    private final double xMin = 50;
+    private final double xMax = 550;
     private boolean isEdible;
 
     public Topping(double speedRatio, boolean isEdible) {
@@ -29,20 +31,26 @@ public abstract class Topping {
         this.yPos = yPos;
     }
 
-    public void changeAngle(double angle) {
-        double totalSpeed = Math.sqrt(xSpeed * xSpeed + ySpeed * ySpeed);
-
-        this.xSpeed = totalSpeed * Math.cos(angle);
-        this.ySpeed = totalSpeed * -Math.sin(angle);
+    public void collision(double angle) {
+        double speed = Math.sin(angle) * 10;
+        this.xSpeed = speed * Math.cos(angle);
+        this.ySpeed = speed * Math.sin(angle);
     }
 
-    public void accelerate(double xAccel, double yAccel) {
-        this.xSpeed += xAccel;
-        this.ySpeed += yAccel;
+    public void freefall() {
+        this.ySpeed += 0.5;
     }
 
     public void update(double difficultyModifier) {
         this.xPos += xSpeed * speedRatio * difficultyModifier;
+
+        if (xPos < xMin) {
+            xPos = xMin;
+        }
+        else if (xPos > xMax) {
+            xPos = xMax;
+        }
+
         this.yPos += ySpeed * speedRatio * difficultyModifier;
     }
 

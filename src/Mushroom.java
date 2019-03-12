@@ -4,7 +4,7 @@ public class Mushroom extends Topping {
     }
 
     public String imageString() {
-        return "ToppingImages/mushroom.png";
+        return "Assets/ToppingImages/mushroom.png";
     }
 
     public String toString() {

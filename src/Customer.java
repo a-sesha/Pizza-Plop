@@ -1,5 +1,4 @@
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -7,23 +6,29 @@ import java.io.IOException;
 public abstract class Customer {
     private int arrivalTime;
     private Topping[] order;
+    private boolean[] toppingsSatisfied;
 
     public Customer() {
         this.arrivalTime = (int)(System.currentTimeMillis()/1000);
 
-        this.order = new Topping[(int)(Math.random() * 3) + 1];
+        this.order = new Topping[3];
+        this.toppingsSatisfied = new boolean[3];
 
-        for (Topping topping : order) {
-            while (topping == null || !topping.isEdible()) {
-                topping = Topping.getList()[(int)(Math.random()*Topping.getList().length)];
+        for (int i=0; i<3; i++) {
+            while (order[i] == null || !order[i].isEdible()) {
+                order[i] = Topping.getList()[(int)(Math.random()*Topping.getList().length)];
             }
         }
+    }
+
+    public Topping[] getOrder() {
+        return order;
     }
 
     public abstract String packageName();
 
     public String imageString() {
-        String imageString = "CustomerImages/" + packageName() + "/";
+        String imageString = "Assets/CustomerImages/" + packageName() + "/";
 
         if (isAngry()) {
             imageString += "angry.png";
@@ -47,8 +52,41 @@ public abstract class Customer {
         return img;
     }
 
+    public double getPatience() {
+        return Math.max(1 - (double)((int)(System.currentTimeMillis()/1000) - arrivalTime)/150, 0);
+    }
+
     public boolean isAngry() {
-        return (int)(System.currentTimeMillis()/1000) - arrivalTime > 20;
+        return getPatience() < 0.3;
+    }
+
+    public boolean addTopping(Topping newTopping) { //returns false if life is lost
+        if (!newTopping.isEdible()) {
+            return false;
+        }
+
+        for (int i=0; i<3; i++) {
+            if (order[i].toString().equals(newTopping.toString()) && !toppingsSatisfied[i]) {
+                toppingsSatisfied[i] = true;
+                return true;
+            }
+        }
+
+        toppingsSatisfied = new boolean[3];
+
+        return true;
+    }
+
+    public Topping[] satisfiedToppings() {
+        Topping[] satisfiedToppings = new Topping[3];
+
+        for (int i=0; i<3; i++) {
+            if (toppingsSatisfied[i]) {
+                satisfiedToppings[i] = order[i];
+            }
+        }
+
+        return satisfiedToppings;
     }
 
     public static Customer[] getList() {

@@ -4,7 +4,7 @@ public class Ham extends Topping {
     }
 
     public String imageString() {
-        return "ToppingImages/ham.png";
+        return "Assets/ToppingImages/ham.png";
     }
 
     public String toString() {

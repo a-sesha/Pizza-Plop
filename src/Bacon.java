@@ -4,7 +4,7 @@ public class Bacon extends Topping {
     }
 
     public String imageString() {
-        return "ToppingImages/bacon.png";
+        return "Assets/ToppingImages/bacon.png";
     }
 
     public String toString() {

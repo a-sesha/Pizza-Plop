@@ -4,7 +4,7 @@ public class Broccoli extends Topping {
     }
 
     public String imageString() {
-        return "ToppingImages/broccoli.png";
+        return "Assets/ToppingImages/broccoli.png";
     }
 
     public String toString() {

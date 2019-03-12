@@ -4,7 +4,7 @@ public class Avocado extends Topping {
     }
 
     public String imageString() {
-        return "ToppingImages/avocado.png";
+        return "Assets/ToppingImages/avocado.png";
     }
 
     public String toString() {

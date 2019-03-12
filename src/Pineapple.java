@@ -4,7 +4,7 @@ public class Pineapple extends Topping {
   }
 
   public String imageString() {
-    return "ToppingImages/pineapple.png";
+    return "Assets/ToppingImages/pineapple.png";
   }
 
   public String toString() {

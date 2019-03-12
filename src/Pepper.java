@@ -4,7 +4,7 @@ public class Pepper extends Topping {
     }
 
     public String imageString() {
-        return "ToppingImages/pepper.png";
+        return "Assets/ToppingImages/pepper.png";
     }
 
     public String toString() {

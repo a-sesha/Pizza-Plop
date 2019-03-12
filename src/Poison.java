@@ -4,7 +4,7 @@ public class Poison extends Topping {
     }
 
     public String imageString() {
-        return "ToppingImages/poison.png";
+        return "Assets/ToppingImages/poison.png";
     }
 
     public String toString() {

@@ -11,14 +11,14 @@ public class Board {
     public Board() {
         this.queue = new ToppingQueue();
         this.dispenser = new ToppingDispenser();
-        this.platforms = new Platform[] {new Platform(200, 300, 150, Color.RED),
-                new Platform(400, 300, 150, Color.BLUE)};
+        this.platforms = new Platform[] {new Platform(200, 300, 200),
+                new Platform(400, 300, 200)};
         this.fallingToppings = new ArrayList<Topping>();
         this.table = new Table();
     }
 
     public void toppingDispensed(Topping topping, double xPos) {
-        topping.setPosition(xPos, 160);
+        topping.setPosition(xPos, 75);
         fallingToppings.add(topping);
     }
 
@@ -35,14 +35,42 @@ public class Board {
             toppingDispensed(droppedTopping, dispenser.getX());
         }
 
+        ArrayList<Topping> despawnedToppings = new ArrayList<Topping>();
+
         for (Topping topping : fallingToppings) {
-            topping.accelerate(0, 0.1);
+            boolean isInFreefall = true;
+            for (Platform platform : platforms) {
+                double theoreticalYPos = Math.tan(platform.getAngle()) * (topping.getX() - platform.getX()) + platform.getY();
+                if (topping.getX() > platform.getXLeft() && topping.getX() < platform.getXRight() &&
+                        topping.getY() - 30 < theoreticalYPos && topping.getY() + 10 > theoreticalYPos) {
+                    topping.setPosition(topping.getX(), theoreticalYPos - 10);
+                    topping.collision(platform.getAngle());
+                    isInFreefall = false;
+                    break;
+                }
+            }
+
+            if (isInFreefall) {
+                topping.freefall();
+            }
+
             topping.update(difficultyModifier);
+
+            if (topping.getY() > 450) {
+                table.addTopping(topping, (int)topping.getX() / 200);
+                despawnedToppings.add(topping);
+            }
+        }
+
+        for (Topping topping : despawnedToppings) {
+            fallingToppings.remove(topping);
         }
 
         for (Platform platform : platforms) {
             platform.update(difficultyModifier);
         }
+
+        table.update();
     }
 
     public Platform.RotationInput getRotationInput(int index) {
@@ -62,12 +90,6 @@ public class Board {
     }
 
     public void draw(Graphics g) {
-        g.setColor(Color.BLACK);
-        g.fillRect(3, 53, 504, 504);
-
-        g.setColor(Color.WHITE);
-        g.fillRect(5, 55, 500, 500);
-
         queue.draw(g);
         dispenser.draw(g);
 
