@@ -51,7 +51,7 @@ public abstract class Customer {
         return (int)(System.currentTimeMillis()/1000) - arrivalTime > 20;
     }
 
-    public void draw(Graphics g) {
-
+    public static Customer[] getList() {
+        return new Customer[] {new PonytailGirl(), new StraightHairGirl()};
     }
 }

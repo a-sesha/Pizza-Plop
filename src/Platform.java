@@ -44,18 +44,18 @@ public class Platform {
     public void update(double difficultyModifier) {
         switch (rotationInput) {
             case CLOCKWISE:
-                angle -= Math.PI/180 * difficultyModifier;
+                angle -= Math.PI/45 * difficultyModifier;
                 break;
             case COUNTERCLOCKWISE:
-                angle += Math.PI/180 * difficultyModifier;
+                angle += Math.PI/45 * difficultyModifier;
         }
 
         switch (translationInput) {
             case UP:
-                yPos -= 2 * difficultyModifier;
+                yPos -= 10 * difficultyModifier;
                 break;
             case DOWN:
-                yPos += 2 * difficultyModifier;
+                yPos += 10 * difficultyModifier;
         }
     }
 

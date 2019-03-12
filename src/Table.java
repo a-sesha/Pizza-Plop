@@ -3,15 +3,25 @@ import java.awt.*;
 public class Table {
     private Customer[] customers;
     private Pizza[] pizzas;
+    private final int numCustomers = 3;
 
     public Table() {
-        this.customers = new Customer[3];
-        this.pizzas = new Pizza[3];
+        this.customers = new Customer[numCustomers];
+        this.pizzas = new Pizza[numCustomers];
 
-        //TEST
-        customers[0] = new StraightHairGirl();
-        customers[1] = new PonytailGirl();
-        customers[2] = new PonytailGirl();
+        for (Pizza pizza : pizzas) {
+            pizza = new Pizza();
+        }
+
+        refill();
+    }
+
+    public void refill() {
+        for (int i=0; i<numCustomers; i++) {
+            if (customers[i] == null) {
+                customers[i] = Customer.getList()[(int)(Math.random()*Customer.getList().length)];
+            }
+        }
     }
 
     public void draw(Graphics g) {
