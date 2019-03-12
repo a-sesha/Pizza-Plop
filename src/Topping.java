@@ -55,6 +55,6 @@ public abstract class Topping {
     }
 
     public static Topping[] getList() {
-        return new Topping[]{new Avocado(), new Bacon(), new Pineapple()};
+        return new Topping[] {new Avocado(), new Bacon(), new Broccoli(), new Ham(), new Mushroom(), new Pepper(), new Pineapple(), new Zucchini()};
     }
 }

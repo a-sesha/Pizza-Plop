@@ -1,6 +1,6 @@
 public class Bacon extends Topping {
     public Bacon() {
-        super(3);
+        super(2.5);
     }
 
     public String imageString() {
