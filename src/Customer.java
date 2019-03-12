@@ -53,7 +53,7 @@ public abstract class Customer {
     }
 
     public double getPatience() {
-        return Math.max(1 - (double) ((int) (System.currentTimeMillis() / 1000) - arrivalTime) / 150, 0);
+        return Math.max(1 - (double) ((int) (System.currentTimeMillis() / 1000) - arrivalTime) / 180, 0);
     }
 
     public boolean isAngry() {
