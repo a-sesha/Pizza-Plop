@@ -1,10 +1,10 @@
 public class Pineapple extends Topping {
   public Pineapple() {
-    super(2);
+    super(2, true);
   }
 
   public String imageString() {
-    return "ToppingImages/pineapple.png";
+    return "Assets/ToppingImages/pineapple.png";
   }
 
   public String toString() {

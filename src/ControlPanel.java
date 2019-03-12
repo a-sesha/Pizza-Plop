@@ -1,9 +1,8 @@
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
 import javax.swing.JButton;
-import java.awt.Component;
-import java.awt.Container;
 import javax.swing.Box;
 import javax.swing.*;
 
@@ -19,6 +18,9 @@ public class ControlPanel extends JPanel
         gStats = g;
 
         instructionsButton = new JButton("Instructions");
+        instructionsButton.setBorderPainted(false);
+        instructionsButton.setFocusPainted(false);
+        instructionsButton.setForeground(Color.ORANGE);
         instructionsButton.addActionListener(this);
         add(instructionsButton);
         add(Box.createHorizontalStrut(80));

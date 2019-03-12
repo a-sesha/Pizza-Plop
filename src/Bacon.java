@@ -1,10 +1,10 @@
 public class Bacon extends Topping {
     public Bacon() {
-        super(3);
+        super(2.5, true);
     }
 
     public String imageString() {
-        return "ToppingImages/bacon.png";
+        return "Assets/ToppingImages/bacon.png";
     }
 
     public String toString() {
