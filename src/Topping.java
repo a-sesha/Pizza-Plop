@@ -6,7 +6,7 @@ import java.io.IOException;
 public abstract class Topping {
     private double xPos, yPos, xSpeed, ySpeed, speedRatio;
     private final double xMin = 50;
-    private final double xMax = 550;
+    private final double xMax = 500;
     private boolean isEdible;
 
     public Topping(double speedRatio, boolean isEdible) {
