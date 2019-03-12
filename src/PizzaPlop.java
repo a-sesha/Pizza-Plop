@@ -14,6 +14,7 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
     private Timer timer;
     private boolean isRunning;
     private Board board;
+    private GameStats gStats;
 
     public double difficultyModifier = 1;
 
@@ -69,7 +70,10 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
 
     public void actionPerformed(ActionEvent e) { //invoked when timer expires every 5ms
         board.update(difficultyModifier);
-        //update(getPoints());
+
+        if (gStats != null) {
+            gStats.update(getPoints());
+        }
 
         repaint(); //ensures PaintComponent is called
     }
@@ -149,6 +153,10 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
         }
     }
 
+    public void setDisplay(GameStats gStats) {
+        this.gStats = gStats;
+    }
+
     //draws everything
 
     public void paintComponent(Graphics g) {
@@ -156,25 +164,6 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
         super.paintComponent(g);
 
         board.draw(g);
-
-
-        //g.drawString("You have 3 lives to kill the enemy", 100, 200);
-
-        /*//Draw heroes
-        myHero.draw(g);
-
-
-        //Draw enemies
-        enemyFast.draw(g);
-        enemySlow.draw(g);
-
-        g.drawString("Points: " + points, 20, getHeight()-30);
-
-        if(!start){//shows instructions in the beginning
-            g.drawString("Instructions: Drag the ship with the mouse", (getWidth() /2) - 100, getHeight()/2 + 20);
-            g.drawString("(Inactive) Press enter to shoot .", (getWidth() /2) - 100, getHeight()/2 + 40);
-            g.drawString("You have 3 lives to kill the enemy", (getWidth() /2) - 100, getHeight()/2+ 60);
-        }*/
 
 
     }

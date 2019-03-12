@@ -17,7 +17,7 @@ public class Arcade extends JFrame {
 
         ControlPanel controls = new ControlPanel(game, display); //Also passing in JavaArcade to ControlPanel, I know you will respond to buttons
 
-        //((PizzaPlop) game).setDisplay(display); //optional, provides game ability to update display
+        ((PizzaPlop) game).setDisplay(display); //optional, provides game ability to update display
 
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());

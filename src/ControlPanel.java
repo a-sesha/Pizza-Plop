@@ -40,7 +40,6 @@ public class ControlPanel extends JPanel
         creditsButton.addActionListener(this);
         add(creditsButton);
 
-
     }
 
     // Called when the start button is clicked
