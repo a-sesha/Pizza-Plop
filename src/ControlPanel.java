@@ -58,8 +58,8 @@ public class ControlPanel extends JPanel
             }
         } else if (button == pauseButton) {
             game.pauseGame();
-            startButton.setText("Resume");
-            startButton.setEnabled(true);
+            if(pauseButton.getText().equals("Pause")) pauseButton.setText("Resume");
+            else pauseButton.setText("Pause");
             repaint();
 
         } else if (button == stopButton) {
