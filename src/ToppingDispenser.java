@@ -29,9 +29,11 @@ public class ToppingDispenser {
             isDispencing = true;
             xPos = xMax;
         } else if (isDispencing) {
-            xPos -= 8 * difficultyModifier;
+            //xPos -= 8 * difficultyModifier;
+            xPos -= 4 * difficultyModifier;
         } else {
-            xPos += 15 * difficultyModifier;
+            //xPos += 15 * difficultyModifier;
+            xPos += 8 * difficultyModifier;
         }
     }
 

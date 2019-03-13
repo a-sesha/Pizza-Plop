@@ -8,7 +8,10 @@
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, ActionListener {
     private Timer timer;
@@ -25,7 +28,7 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
         this.board = new Board();
         this.difficultyModifier = 1;
 
-        timer = new Timer(10, this);
+        timer = new Timer(2, this);
         timer.start();
 
         addKeyListener(this);
