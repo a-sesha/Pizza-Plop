@@ -37,6 +37,9 @@ public class Table {
         if (position >= 0 && position < numCustomers) {
             if (!customers[position].addTopping(topping)) {
                 lives.decrease();
+                customers[position] = null;
+
+                refill();
             }
         }
     }
@@ -59,6 +62,10 @@ public class Table {
         }
 
         refill();
+    }
+
+    public boolean isGameOver() {
+        return lives.isGameOver();
     }
 
     public void draw(Graphics g) {
