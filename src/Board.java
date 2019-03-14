@@ -93,6 +93,10 @@ public class Board {
         return table.getScore();
     }
 
+    public boolean isGameOver() {
+        return table.isGameOver();
+    }
+
     public void draw(Graphics g) {
         queue.draw(g);
         dispenser.draw(g);

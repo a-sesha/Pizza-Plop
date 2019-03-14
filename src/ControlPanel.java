@@ -18,24 +18,24 @@ public class ControlPanel extends JPanel
         gStats = g;
 
         instructionsButton = new JButton("Instructions");
-        instructionsButton.setBorderPainted(false);
-        instructionsButton.setFocusPainted(false);
-        instructionsButton.setForeground(Color.ORANGE);
         instructionsButton.addActionListener(this);
         add(instructionsButton);
-        add(Box.createHorizontalStrut(80));
+        //add(Box.createHorizontalStrut(60));
         startButton = new JButton("Start");
+        startButton.setForeground(Color.GREEN);
         startButton.addActionListener(this);
 
         add(startButton);
 
         pauseButton = new JButton("Pause");
+        pauseButton.setForeground(Color.BLUE);
         pauseButton.addActionListener(this);
         add(pauseButton);
         stopButton = new JButton("Stop");
+        stopButton.setForeground(Color.RED);
         stopButton.addActionListener(this);
         add(stopButton);
-        add(Box.createHorizontalStrut(80));
+        //add(Box.createHorizontalStrut(60));
         creditsButton = new JButton("Credits");
         creditsButton.addActionListener(this);
         add(creditsButton);

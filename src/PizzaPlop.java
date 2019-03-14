@@ -19,16 +19,17 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
     private boolean isPaused;
     private Board board;
     private GameStats gStats;
+    private int highScore;
 
     public double difficultyModifier = 1;
 
     public PizzaPlop() {
         this.isRunning = false;
         this.isPaused = false;
-        this.board = new Board();
-        this.difficultyModifier = 1;
 
-        timer = new Timer(2, this);
+        initializeGame();
+
+        timer = new Timer(10, this);
         timer.start();
 
         addKeyListener(this);
@@ -37,12 +38,20 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
         setBackground(Color.WHITE);
     }
 
+    public void initializeGame() {
+        this.board = new Board();
+        this.difficultyModifier = 1;
+    }
+
     public boolean running() {
         return isRunning;
     }
 
     public void startGame() {
         isRunning = true;
+        isPaused = false;
+
+        initializeGame();
     }
 
     public String getGameName() {
@@ -51,31 +60,31 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
 
     public void pauseGame() {
         isPaused = !isPaused;
-        if (isPaused) {
-            try {
-                Thread.sleep(250);
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
-        }
     }
 
-
-
     public String getInstructions() {
-        return "";
+        return "In Pizza Plop, the goal of the game is to put the correct toppings on each pizza, keeping the customers satisfied. By\n" +
+                "controlling the two platforms, which you can either move up and down or rotate (left platform: WASD, right platform: Arrow Keys),\n" +
+                "direct the falling toppings onto one of the pizzas or into the trash. However, make sure not to put a topping that isn't on\n" +
+                "the customer's order (shown below the pizza), as this will mean you'll have to throw away the pizza and start over. Make sure\n" +
+                "to not waste too much time, because the customer will eventually grow impatient (shown by the bar and the face), resulting in\n" +
+                "a lost life. Additionally, putting poison in a customer's pizza will automatically result in a lost life as well. Your score\n" +
+                "is determined by how many pizzas you complete and how quickly you make them.";
     }
 
     public String getCredits() {
-        return "";
+        return "David Grossman\nAnuj Sesha\nAshwin Ganesh";
     }
 
     public String getHighScore() {
-        return "0";
+        return "" + highScore;
     }
 
     public void stopGame() {
         isRunning = false;
+        isPaused = false;
+
+        initializeGame();
     }
 
     public int getPoints() {
@@ -83,14 +92,21 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
     }
 
     public void actionPerformed(ActionEvent e) { //invoked when timer expires every 5ms
-        if(!isPaused) {
-            pauseGame();
-        }
+        if (isRunning && !isPaused) {
+            board.update(difficultyModifier);
 
-        board.update(difficultyModifier);
+            if (gStats != null) {
+                gStats.update(getPoints());
+            }
 
-        if (gStats != null) {
-            gStats.update(getPoints());
+            if (board.isGameOver()) {
+                if (getPoints() > highScore) {
+                    highScore = getPoints();
+                }
+
+                gStats.gameOver(getPoints());
+                stopGame();
+            }
         }
 
         repaint(); //ensures PaintComponent is called
@@ -144,30 +160,32 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
     }
 
     public void keyPressed(KeyEvent e) {
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_A:
-                board.updateInput(0, Platform.RotationInput.CLOCKWISE);
-                break;
-            case KeyEvent.VK_D:
-                board.updateInput(0, Platform.RotationInput.COUNTERCLOCKWISE);
-                break;
-            case KeyEvent.VK_W:
-                board.updateInput(0, Platform.TranslationInput.UP);
-                break;
-            case KeyEvent.VK_S:
-                board.updateInput(0, Platform.TranslationInput.DOWN);
-                break;
-            case KeyEvent.VK_LEFT:
-                board.updateInput(1, Platform.RotationInput.CLOCKWISE);
-                break;
-            case KeyEvent.VK_RIGHT:
-                board.updateInput(1, Platform.RotationInput.COUNTERCLOCKWISE);
-                break;
-            case KeyEvent.VK_UP:
-                board.updateInput(1, Platform.TranslationInput.UP);
-                break;
-            case KeyEvent.VK_DOWN:
-                board.updateInput(1, Platform.TranslationInput.DOWN);
+        if (isRunning && !isPaused) {
+            switch (e.getKeyCode()) {
+                case KeyEvent.VK_A:
+                    board.updateInput(0, Platform.RotationInput.CLOCKWISE);
+                    break;
+                case KeyEvent.VK_D:
+                    board.updateInput(0, Platform.RotationInput.COUNTERCLOCKWISE);
+                    break;
+                case KeyEvent.VK_W:
+                    board.updateInput(0, Platform.TranslationInput.UP);
+                    break;
+                case KeyEvent.VK_S:
+                    board.updateInput(0, Platform.TranslationInput.DOWN);
+                    break;
+                case KeyEvent.VK_LEFT:
+                    board.updateInput(1, Platform.RotationInput.CLOCKWISE);
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    board.updateInput(1, Platform.RotationInput.COUNTERCLOCKWISE);
+                    break;
+                case KeyEvent.VK_UP:
+                    board.updateInput(1, Platform.TranslationInput.UP);
+                    break;
+                case KeyEvent.VK_DOWN:
+                    board.updateInput(1, Platform.TranslationInput.DOWN);
+            }
         }
     }
 
@@ -181,8 +199,12 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
 
         super.paintComponent(g);
 
-        board.draw(g);
-
+        if (isRunning) {
+            board.draw(g);
+        } else {
+            g.setColor(Color.BLACK);
+            g.drawString("Press the Start button to begin.", 200, 400);
+        }
 
     }
 }
