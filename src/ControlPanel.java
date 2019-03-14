@@ -1,10 +1,7 @@
-import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.Box;
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ControlPanel extends JPanel
         implements ActionListener {
@@ -18,25 +15,45 @@ public class ControlPanel extends JPanel
         gStats = g;
 
         instructionsButton = new JButton("Instructions");
+        instructionsButton.setBorderPainted(false);
+        instructionsButton.setFocusPainted(false);
+        instructionsButton.setFocusPainted(false);
+        instructionsButton.setBorderPainted(false);
         instructionsButton.addActionListener(this);
         add(instructionsButton);
         //add(Box.createHorizontalStrut(60));
         startButton = new JButton("Start");
-        startButton.setForeground(Color.GREEN);
+        startButton.setBorderPainted(false);
+        startButton.setFocusPainted(false);
+        startButton.setFocusPainted(false);
+        startButton.setBorderPainted(false);
+        startButton.setForeground(Color.GREEN.darker());
         startButton.addActionListener(this);
 
         add(startButton);
 
         pauseButton = new JButton("Pause");
         pauseButton.setForeground(Color.BLUE);
+        pauseButton.setBorderPainted(false);
+        pauseButton.setFocusPainted(false);
+        pauseButton.setFocusPainted(false);
+        pauseButton.setBorderPainted(false);
         pauseButton.addActionListener(this);
         add(pauseButton);
         stopButton = new JButton("Stop");
         stopButton.setForeground(Color.RED);
+        stopButton.setBorderPainted(false);
+        stopButton.setFocusPainted(false);
+        stopButton.setFocusPainted(false);
+        stopButton.setBorderPainted(false);
         stopButton.addActionListener(this);
         add(stopButton);
         //add(Box.createHorizontalStrut(60));
         creditsButton = new JButton("Credits");
+        creditsButton.setBorderPainted(false);
+        creditsButton.setFocusPainted(false);
+        creditsButton.setFocusPainted(false);
+        creditsButton.setBorderPainted(false);
         creditsButton.addActionListener(this);
         add(creditsButton);
 
@@ -58,7 +75,7 @@ public class ControlPanel extends JPanel
             }
         } else if (button == pauseButton) {
             game.pauseGame();
-            if(pauseButton.getText().equals("Pause")) pauseButton.setText("Resume");
+            if (pauseButton.getText().equals("Pause") && game.running()) pauseButton.setText("Resume");
             else pauseButton.setText("Pause");
             repaint();
 

@@ -6,12 +6,16 @@
  * @version 2019/3/7
  */
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, ActionListener {
     private Timer timer;
@@ -50,7 +54,6 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
     public void startGame() {
         isRunning = true;
         isPaused = false;
-
         initializeGame();
     }
 
@@ -112,8 +115,8 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
                 stopGame();
             }
         }
-
         repaint(); //ensures PaintComponent is called
+
     }
 
     public void keyTyped(KeyEvent e) {
@@ -205,10 +208,27 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
 
         if (isRunning) {
             board.draw(g);
+            if (isPaused) {
+                g.setColor(new Color(200, 100, 100, 210));
+                g.fillRect(0, 0, 600, 800);
+                g.setColor(Color.BLACK);
+                g.setFont(new Font("sansserif", Font.BOLD, 38));
+                g.drawString("Paused", 235, 320);
+            }
         } else {
-            g.setColor(Color.BLACK);
-            g.drawString("Press the Start button to begin.", 200, 400);
-        }
+            g.setFont(new Font("sansserif", Font.BOLD, 32));
+            g.setColor(Color.RED);
+            g.drawString("Press the Start button to begin.", 65, 360);
+            BufferedImage pizzaImg = null;
 
+            try {
+                pizzaImg = ImageIO.read(new File("src/Assets/pizza.png"));
+            } catch (IOException e) {
+                System.out.println("Picture could not load");
+            }
+            g.drawImage(pizzaImg, 180, 30, 270, 270, null);
+        }
     }
+
 }
+
