@@ -85,6 +85,7 @@ public class ControlPanel extends JPanel
             gStats.repaint();
             startButton.setEnabled(true);
             startButton.setText("Restart");
+            pauseButton.setText("Pause");
             repaint();
         } else if (button == creditsButton) {
             String credits = game.getCredits();
