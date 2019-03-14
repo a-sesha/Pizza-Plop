@@ -3,36 +3,36 @@ public interface JavaArcade {
     /* This method should return true if your game is in a "start" state, it should return false if
      * your game is in a "paused" state or "stopped" or "unstarted" */
 
-    public boolean running();
+    boolean running();
 
     /* This method should start your game, it should also set a global boolean value so that your running method
      * can return the appropriate value */
 
-    public void startGame();
+    void startGame();
 
     /*This method should return the name of your game */
-    public String getGameName();
+    String getGameName();
 
     /* This method should stop your timers but save your score, it should set a boolean value to indicate
      *the game is not running, this value will be returned by running method */
 
-    public void pauseGame();
+    void pauseGame();
 
     /* This method should return your instructions */
-    public String getInstructions();
+    String getInstructions();
 
     /* This method should return the author(s) of the game */
 
-    public String getCredits();
+    String getCredits();
 
     /* This method should return the highest score played for this game */
-    public String getHighScore();
+    String getHighScore();
 
     /* This method should stop the timers, reset the score, and set a running boolean value to false */
-    public void stopGame();
+    void stopGame();
 
     /* This method shoud return the current players number of points */
 
-    public int getPoints(); //add to spec
+    int getPoints(); //add to spec
 
 }
