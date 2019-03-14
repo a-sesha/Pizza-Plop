@@ -1,8 +1,6 @@
-import java.awt.Container;
-import java.awt.BorderLayout;
-import javax.swing.JPanel;
-import javax.swing.JFrame;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import java.awt.*;
 
 public class Arcade extends JFrame {
     public Arcade() {
