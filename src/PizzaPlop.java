@@ -93,6 +93,10 @@ public class PizzaPlop extends JPanel implements JavaArcade, KeyListener, Action
 
     public void actionPerformed(ActionEvent e) { //invoked when timer expires every 5ms
         if (isRunning && !isPaused) {
+            difficultyModifier += 0.002;
+
+            System.out.println(difficultyModifier);
+
             board.update(difficultyModifier);
 
             if (gStats != null) {
